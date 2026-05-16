@@ -18,7 +18,7 @@ def worker_with_output(task_func, idx, item, output_queue):
         # 在这里调用的任何函数，其print都会被重定向到buffer
         try:
             start_time = time.time()
-            result = task_func(item)
+            result = task_func(item,idx)
         except Exception as e:
             # 错误信息也会被捕获
             print(f"任务{task_id}发生错误: {e}")
@@ -43,9 +43,12 @@ def worker_with_output(task_func, idx, item, output_queue):
         'print_output': print_output
     } 
 
-def my_task_example(x):
+def my_task_example(x,idx):
+    print()
     """示例任务函数，包含子函数调用"""
-    print(f"[任务开始] 处理数据: {x}")
+    if idx != None:
+        print("[任务",idx,f"开始] 处理数据: {x}")
+        print(f"[任务开始] 处理数据: {x}")
     time.sleep(x * 0.2)
     
     # 子函数调用

@@ -2,6 +2,7 @@ import time
 
 def my_task(x, task_id=None):
     """这是你的实际任务函数，可以任意复杂"""
+    print()
     if task_id is not None:
         print(f"[任务{task_id}] my_task开始处理: {x}")
     else:
