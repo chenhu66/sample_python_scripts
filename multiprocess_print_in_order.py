@@ -3,7 +3,7 @@ import time
 import sys
 from io import StringIO
 import threading
-from queue import Empty
+from queue import Empty, Queue
 from contextlib import redirect_stdout
 
 def worker_with_output(task_func, idx, item, output_queue):
@@ -195,4 +195,3 @@ if __name__ == "__main__":
         print(f"结果: {results}")
     except Exception as e:
         print(f"执行失败: {e}")
-
